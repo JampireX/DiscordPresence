@@ -2,7 +2,6 @@ package ru.jampire.discordpresence;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
@@ -19,8 +18,7 @@ public class DiscordPresence {
 		Gson gson = new GsonBuilder().create();
 		try (InputStreamReader isr = new InputStreamReader(DiscordPresence.class.getResourceAsStream("/config.json"))) {
 			Config config = gson.fromJson(isr, Config.class);
-			DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler(System.out::println).build();
-			DiscordRPC.discordInitialize(config.getClientId(), handlers, true);
+			DiscordRPC.discordInitialize(config.getClientId(), null, true);
 			executorService.scheduleWithFixedDelay(() -> {
 				try {
 					DiscordRichPresence.Builder rich = new DiscordRichPresence.Builder(config.getState());
