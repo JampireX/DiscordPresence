@@ -1,0 +1,13 @@
+{
+    "clientId": "id",
+    "state": "thing",
+    "details": null,
+    "bigImage": {
+        "key": null,
+        "text": null
+    },
+    "smallImage": {
+        "key": null,
+        "text": null
+    }
+}
